@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TwitterAnalyzer_GUI.Controller">
+   <children>
+      <Pane fx:id="mainPane" layoutX="200.0" layoutY="103.0" prefHeight="181.0" prefWidth="580.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
+         <children>
+            <Label layoutY="14.0" text="SELECT STREAM">
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ChoiceBox fx:id="choice_Attribute1" layoutX="108.0" layoutY="15.0" prefHeight="25.0" prefWidth="100.0" />
+            <Button fx:id="button_newAttribute" layoutX="208.0" layoutY="15.0" mnemonicParsing="false" prefWidth="30.0" text="+" />
+            <Label layoutY="54.0" prefHeight="27.0" prefWidth="54.0" text="FROM">
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <ChoiceBox fx:id="choice_FilterType" layoutX="164.0" layoutY="54.0" prefHeight="25.0" prefWidth="100.0" />
+            <ChoiceBox fx:id="choice_TwitterStream" layoutX="52.0" layoutY="54.0" prefHeight="27.0" prefWidth="107.0" style="-fx-border-color: orange; -fx-border-radius: 3px;" />
+         </children>
+      </Pane>
+      <TextArea fx:id="text_query" layoutX="136.0" layoutY="26.0" prefHeight="64.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextArea fx:id="text_result" layoutX="10.0" layoutY="291.0" prefHeight="89.0" prefWidth="506.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="291.0" />
+      <Button layoutX="526.0" layoutY="301.0" mnemonicParsing="false" onAction="#initiateSearch" text="Search" AnchorPane.rightAnchor="22.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="button_reset" layoutX="526.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Reset" AnchorPane.rightAnchor="22.0" />
+   </children>
+</AnchorPane>

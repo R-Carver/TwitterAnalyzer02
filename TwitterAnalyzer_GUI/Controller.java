@@ -43,9 +43,21 @@ public class Controller {
     public ObservableList<String> filterMode = FXCollections.observableArrayList("PREFFERING","WHERE");
     public ObservableList<String> twitterStream = FXCollections.observableArrayList("TwitterStream");
     public static ObservableList<String> attributes = FXCollections.observableArrayList(
+            "created_at",
             "test",
             "source",
-            "tweet_language"
+            "lang",
+            "place",
+            "user_name",
+            "screen_name",
+            "description",
+            "location",
+            "user_langs",
+            "hashtags",
+            "followers_count",
+            "friends_count",
+            "statuses_count",
+            "account_created_at"
     );
 
     @FXML
@@ -127,6 +139,7 @@ public class Controller {
                 if(att_container != null){
                     att_container.resetAttributes();
                 }
+                updateResult("");
             }
         });
     }

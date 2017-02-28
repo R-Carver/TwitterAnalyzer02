@@ -20,7 +20,7 @@ public class Search_Where extends Filter_Search_Field {
     private String type;
 
     public static ObservableList<String> search_String = FXCollections.observableArrayList(
-        "-","Like", "In"
+        "-","LIKE", "IN"
     );
 
     public static ObservableList<String> search_Num = FXCollections.observableArrayList(
@@ -95,7 +95,7 @@ public class Search_Where extends Filter_Search_Field {
                         }else if(newValue.intValue() == 6){
                             generateDoubleTextField();
                         }
-                        subQuery.setMode(search_String.get(newValue.intValue()));
+                        subQuery.setMode(search_Num.get(newValue.intValue()));
                     }
                 }
         );
@@ -113,7 +113,7 @@ public class Search_Where extends Filter_Search_Field {
         text_1.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }
@@ -131,7 +131,7 @@ public class Search_Where extends Filter_Search_Field {
         text_1.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }
@@ -147,7 +147,7 @@ public class Search_Where extends Filter_Search_Field {
         text_2.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }

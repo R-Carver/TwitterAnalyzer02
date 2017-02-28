@@ -120,7 +120,7 @@ public class Search_Preferring extends Filter_Search_Field {
         text_1.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }
@@ -138,7 +138,7 @@ public class Search_Preferring extends Filter_Search_Field {
         text_1.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }
@@ -154,7 +154,7 @@ public class Search_Preferring extends Filter_Search_Field {
         text_2.textProperty().addListener((observable, oldValue, newValue)->{
             String query = "";
             if(type == "VARCHAR"){
-                query = "'" + newValue + "'";
+                query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
             }

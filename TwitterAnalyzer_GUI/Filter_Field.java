@@ -25,10 +25,19 @@ public class Filter_Field {
     public static double yPos;
     public static Pane mainPane;
     public static ObservableList<Attribute> attributes = FXCollections.observableArrayList(
+            new Attribute("created_at", "VARCHAR"),
             new Attribute("test", "VARCHAR"),
             new Attribute("source", "VARCHAR"),
-            new Attribute("tweet_language", "VARCHAR"),
-            new Attribute("follower_count", "INTEGER"),
+            new Attribute("lang", "VARCHAR"),
+            new Attribute("place", "VARCHAR"),
+            new Attribute("user_name", "VARCHAR"),
+            new Attribute("screen_name", "VARCHAR"),
+            new Attribute("description", "VARCHAR"),
+            new Attribute("location", "VARCHAR"),
+            new Attribute("user_langs", "VARCHAR"),
+            new Attribute("hashtags", "VARCHAR"),
+            new Attribute("followers_count", "INTEGER"),
+            new Attribute("friends_count", "INTEGER"),
             new Attribute("statuses_count", "INTEGER")
     );
 

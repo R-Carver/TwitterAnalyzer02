@@ -70,7 +70,7 @@ public class Query {
     }
 
     public void updateMode(String text){
-        query_mode = text;
+        query_mode = text+ " ";
         updateTheQuery();
     }
 

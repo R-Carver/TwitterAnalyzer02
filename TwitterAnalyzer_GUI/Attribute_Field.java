@@ -19,9 +19,21 @@ public class Attribute_Field {
     public static double yPos;
     public static Pane mainPane;
     public static ObservableList<String> attributes = FXCollections.observableArrayList(
+            "created_at",
             "test",
             "source",
-            "tweet_language"
+            "lang",
+            "place",
+            "user_name",
+            "screen_name",
+            "description",
+            "location",
+            "user_langs",
+            "hashtags",
+            "followers_count",
+            "friends_count",
+            "statuses_count",
+            "account_created_at"
     );
 
     private ChoiceBox choice_attribute;

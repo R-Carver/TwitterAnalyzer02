@@ -28,7 +28,7 @@ public class Search_Where extends Filter_Search_Field {
     );
 
     public static ObservableList<String> search_Date = FXCollections.observableArrayList(
-
+            "LATEST", "EARLIEST", "LATER_THAN", "EARLIER THAN", "BETWEEN", "AROUND"
     );
 
     public Search_Where(String type, FilterSubQuery subQuery){
@@ -41,9 +41,9 @@ public class Search_Where extends Filter_Search_Field {
         }else if(type == "INTEGER"){
 
             generateNumSearch();
-        }else{
+        }else if(type == "DATE"){
 
-            //generateDateSearch();
+            generateDateSearch();
         }
     }
 
@@ -101,6 +101,30 @@ public class Search_Where extends Filter_Search_Field {
         );
     }
 
+    private void generateDateSearch(){
+        choice_searchtype = new ChoiceBox();
+        choice_searchtype.setPrefWidth(super.choice_attribute_length);
+        choice_searchtype.setItems(search_Date);
+
+        choice_searchtype.setLayoutX(super.xPos);
+        choice_searchtype.setLayoutY(super.yPos);
+        mainPane.getChildren().add(choice_searchtype);
+
+        choice_searchtype.getSelectionModel().selectedIndexProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                        //remove old fields so they dont override
+                        removeTextFields();
+                        generateSingleTextField();
+
+                        subQuery.setMode(search_Date.get(newValue.intValue()));
+                    }
+                }
+        );
+    }
+
     private void generateSingleTextField(){
 
         double xPos = choice_searchtype.getLayoutX() + choice_searchtype.getPrefWidth() + super.padding_attribute;
@@ -116,6 +140,8 @@ public class Search_Where extends Filter_Search_Field {
                 query = "('" + newValue + "')";
             }else if(type == "INTEGER"){
                 query = newValue;
+            }else if(type == "DATE"){
+                query = "'" + newValue + "'";
             }
             subQuery.setSearch(query);
         });

@@ -11,6 +11,7 @@ public class FilterSubQuery {
     String query_attribute = "";
     String query_mode = "";
     String query_search = "";
+    String query_mode_seperated = "";
     String query_search2 ="";
 
     private int subQueryCount;
@@ -23,7 +24,7 @@ public class FilterSubQuery {
 
     public void updateSubQuery(){
 
-        theSubQuery = query_connector + query_attribute + query_mode + query_search + query_search2;
+        theSubQuery = query_connector + query_attribute + query_mode + query_search + query_mode_seperated +  query_search2;
         Query theQuery = Query.getInstance();
         if(subQueryCount == 1){
             theQuery.updateFilter1(theSubQuery);
@@ -43,15 +44,30 @@ public class FilterSubQuery {
         updateSubQuery();
     }
     public void setMode(String text){
-        query_mode = text+ " ";
+
+        if(text == "-"){
+            query_mode = "";
+        }else{
+            query_mode = text+ " ";
+        }
+        updateSubQuery();
+    }
+    public void setModeSeperated(String text){
+        if(text == "IN/NOT IN"){
+            query_mode = "IN"+ " ";
+            query_mode_seperated = "NOT IN" + " ";
+        }else if(text == "IN/ELSE"){
+            query_mode = "IN" + " ";
+            query_mode_seperated = "ELSE" + " ";
+        }
         updateSubQuery();
     }
     public void setSearch(String text){
-        query_search = text;
+        query_search = text + " ";
         updateSubQuery();
     }
     public void setSearch2(String text){
-        query_search2 = text;
+        query_search2 = text + " ";
         updateSubQuery();
     }
 
@@ -61,6 +77,7 @@ public class FilterSubQuery {
         query_attribute = "";
         query_mode = "";
         query_search = "";
+        query_mode_seperated = "";
         query_search2 ="";
         updateSubQuery();
     }

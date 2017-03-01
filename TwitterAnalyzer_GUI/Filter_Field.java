@@ -38,7 +38,8 @@ public class Filter_Field {
             new Attribute("hashtags", "VARCHAR"),
             new Attribute("followers_count", "INTEGER"),
             new Attribute("friends_count", "INTEGER"),
-            new Attribute("statuses_count", "INTEGER")
+            new Attribute("statuses_count", "INTEGER"),
+            new Attribute("account_created_at","DATE")
     );
 
     private Filter_Search_Field search_field1;

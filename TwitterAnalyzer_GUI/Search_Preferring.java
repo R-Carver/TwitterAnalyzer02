@@ -20,7 +20,7 @@ public class Search_Preferring extends Filter_Search_Field {
     private String type;
 
     public static ObservableList<String> search_String = FXCollections.observableArrayList(
-        "IN", "NOT IN", "LAYERED", "IN/NOT IN" , "IN/ELSE"
+        "IN", "NOT IN", "LAYERED", "CONTAINS", "IN/NOT IN" , "IN/ELSE"
     );
 
     public static ObservableList<String> search_Num = FXCollections.observableArrayList(
@@ -66,10 +66,10 @@ public class Search_Preferring extends Filter_Search_Field {
 
                         //remove old fields so they dont override
                         removeTextFields();
-                        if(newValue.intValue() >=0 && newValue.intValue()<=2){
+                        if(newValue.intValue() >=0 && newValue.intValue()<=3){
                             generateSingleTextField();
                             subQuery.setMode(search_String.get(newValue.intValue()));
-                        }else if(newValue.intValue() > 2){
+                        }else if(newValue.intValue() > 3){
                             generateDoubleTextFieldSeperated();
                             subQuery.setModeSeperated(search_String.get(newValue.intValue()));
                         }
@@ -125,8 +125,9 @@ public class Search_Preferring extends Filter_Search_Field {
 
                         //remove old fields so they dont override
                         removeTextFields();
-                        generateSingleTextField();
-
+                        if(newValue.intValue() >=2 && newValue.intValue()<=5) {
+                            generateSingleTextField();
+                        }
                         subQuery.setMode(search_Date.get(newValue.intValue()));
                     }
                 }
@@ -239,6 +240,7 @@ public class Search_Preferring extends Filter_Search_Field {
             mainPane.getChildren().remove(text_2);
             subQuery.setSearch2("");
         }
+        subQuery.setModeSeperated("");
     }
 
     @Override

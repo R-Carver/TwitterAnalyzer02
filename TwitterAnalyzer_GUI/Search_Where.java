@@ -28,7 +28,7 @@ public class Search_Where extends Filter_Search_Field {
     );
 
     public static ObservableList<String> search_Date = FXCollections.observableArrayList(
-            "LATEST", "EARLIEST", "LATER_THAN", "EARLIER THAN", "BETWEEN", "AROUND"
+            "-",">", "<", ">=", "<=", "=","BETWEEN"
     );
 
     public Search_Where(String type, FilterSubQuery subQuery){
@@ -64,8 +64,10 @@ public class Search_Where extends Filter_Search_Field {
 
                         //remove old fields so they dont override
                         removeTextFields();
-                        if(newValue.intValue() >=0 && newValue.intValue()<=2){
+                        if(newValue.intValue() >=1 && newValue.intValue()<=2){
                             generateSingleTextField();
+                        }else if(newValue.intValue() == 0){
+                            generateSingleTextFieldEmpty();
                         }
                         subQuery.setMode(search_String.get(newValue.intValue()));
                     }
@@ -90,10 +92,12 @@ public class Search_Where extends Filter_Search_Field {
 
                         //remove old fields so they dont override
                         removeTextFields();
-                        if(newValue.intValue() >=0 && newValue.intValue()<=5){
+                        if(newValue.intValue() >=1 && newValue.intValue()<=5){
                             generateSingleTextField();
                         }else if(newValue.intValue() == 6){
                             generateDoubleTextField();
+                        }else if(newValue.intValue() == 0){
+                            generateSingleTextFieldEmpty();
                         }
                         subQuery.setMode(search_Num.get(newValue.intValue()));
                     }
@@ -117,8 +121,11 @@ public class Search_Where extends Filter_Search_Field {
 
                         //remove old fields so they dont override
                         removeTextFields();
-                        generateSingleTextField();
-
+                        if(newValue.intValue() == 0){
+                            generateSingleTextFieldEmpty();
+                        }else{
+                            generateSingleTextField();
+                        }
                         subQuery.setMode(search_Date.get(newValue.intValue()));
                     }
                 }
@@ -143,6 +150,22 @@ public class Search_Where extends Filter_Search_Field {
             }else if(type == "DATE"){
                 query = "'" + newValue + "'";
             }
+            subQuery.setSearch(query);
+        });
+    }
+
+    private void generateSingleTextFieldEmpty(){
+
+        double xPos = choice_searchtype.getLayoutX() + choice_searchtype.getPrefWidth() + super.padding_attribute;
+        double yPos = choice_searchtype.getLayoutY();
+        text_1 = new TextField();
+        text_1.setPrefWidth(super.text_length);
+        text_1.setLayoutX(xPos);
+        text_1.setLayoutY(yPos);
+        mainPane.getChildren().add(text_1);
+        text_1.textProperty().addListener((observable, oldValue, newValue)->{
+            String query = "";
+            query = newValue;
             subQuery.setSearch(query);
         });
     }

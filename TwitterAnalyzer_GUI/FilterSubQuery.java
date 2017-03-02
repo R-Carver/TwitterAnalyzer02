@@ -59,6 +59,8 @@ public class FilterSubQuery {
         }else if(text == "IN/ELSE"){
             query_mode = "IN" + " ";
             query_mode_seperated = "ELSE" + " ";
+        }else{
+            query_mode_seperated = text;
         }
         updateSubQuery();
     }

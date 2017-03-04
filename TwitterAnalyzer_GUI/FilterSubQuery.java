@@ -52,6 +52,10 @@ public class FilterSubQuery {
         }
         updateSubQuery();
     }
+
+    public String getMode(){
+        return query_mode;
+    }
     public void setModeSeperated(String text){
         if(text == "IN/NOT IN"){
             query_mode = "IN"+ " ";

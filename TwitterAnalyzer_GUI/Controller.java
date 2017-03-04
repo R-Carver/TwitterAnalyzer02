@@ -40,11 +40,11 @@ public class Controller {
 
     private Query theQuery;
 
-    public ObservableList<String> filterMode = FXCollections.observableArrayList("PREFFERING","WHERE");
+    public ObservableList<String> filterMode = FXCollections.observableArrayList("PREFERRING","WHERE");
     public ObservableList<String> twitterStream = FXCollections.observableArrayList("TwitterStream");
     public static ObservableList<String> attributes = FXCollections.observableArrayList(
             "created_at",
-            "test",
+            "text",
             "source",
             "lang",
             "place",
@@ -85,7 +85,7 @@ public class Controller {
         choice_Attribute1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                String newAttribute = attributes.get(newValue.intValue())+ " ";
+                String newAttribute = attributes.get(newValue.intValue());
                 theQuery.updateQueryAttr1(newAttribute);
             }
         });

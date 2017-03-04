@@ -144,13 +144,26 @@ public class Search_Preferring extends Filter_Search_Field {
         text_1.setLayoutY(yPos);
         mainPane.getChildren().add(text_1);
 
-        text_1.textProperty().addListener((observable, oldValue, newValue)->{
+        text_1.textProperty().addListener((observable, oldValue, newValue) -> {
             String query = "";
-            if(type == "VARCHAR"){
+
+            //Komma seperation
+            if (newValue.contains(",")) {
+                String[] temp = newValue.split(",");
+                newValue = "";
+                int i;
+                for (i = 0; i < temp.length - 1; i++) {
+                    newValue += "'" + temp[i] + "'" + ", ";
+                }
+                newValue += "'" + temp[i] + "'";
+                query = "(" + newValue + ")";
+            } else if (type == "VARCHAR" && subQuery.getMode().contains("CONTAINS")){
+                query = "'" + newValue + "'";
+            } else if (type == "VARCHAR") {
                 query = "('" + newValue + "')";
-            }else if(type == "INTEGER"){
+            } else if (type == "INTEGER") {
                 query = newValue;
-            }else if(type == "DATE"){
+            } else if (type == "DATE") {
                 query = "'" + newValue + "'";
             }
             subQuery.setSearch(query);

@@ -20,7 +20,7 @@ public class Attribute_Field {
     public static Pane mainPane;
     public static ObservableList<String> attributes = FXCollections.observableArrayList(
             "created_at",
-            "test",
+            "text",
             "source",
             "lang",
             "place",

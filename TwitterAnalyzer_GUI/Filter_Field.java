@@ -26,7 +26,7 @@ public class Filter_Field {
     public static Pane mainPane;
     public static ObservableList<Attribute> attributes = FXCollections.observableArrayList(
             new Attribute("created_at", "VARCHAR"),
-            new Attribute("test", "VARCHAR"),
+            new Attribute("text", "VARCHAR"),
             new Attribute("source", "VARCHAR"),
             new Attribute("lang", "VARCHAR"),
             new Attribute("place", "VARCHAR"),
